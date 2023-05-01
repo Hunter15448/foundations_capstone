@@ -5,7 +5,7 @@ import bcrypt
 connection = sqlite3.connect("dp_capstone.db")
 cursor = connection.cursor()
 
-with open("schema.sql") as my_queries:
+with open("new_schema.sql") as my_queries:
     queries = my_queries.read()
 
 cursor.executescript(queries)
