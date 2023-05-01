@@ -578,7 +578,7 @@ def manager_space():
         elif start == "4":
             while True:
                 delete_interface = input('''
-DEACTIVATE A EMPLOYEES
+DEACTIVATE A EMPLOYEE
 [1] CONTINUE WITH DEACTIVATION
 [2] GO BACK
 ''')
