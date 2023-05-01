@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS Assessment_Results (
     
     FOREIGN KEY (user_id)
             REFERENCES Users (user_id),
-FOREIGN KEY (assessment_id)
+    FOREIGN KEY (assessment_id)
             REFERENCES Assessments (assessment_id)
 
 
