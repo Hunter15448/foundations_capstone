@@ -215,7 +215,9 @@ def view_all_compentencies():
 
 def search_compentacy_level():
     query = "SELECT * FROM COMPENTENCIES WHERE user_id LIKE ?"
-    value = input("Please enter the User Id that you would like to know the compentency of: ")
+    value = input(f'''Please enter the User Id for the person that you would like to know the compentency of:
+{view_people()}
+''')
     value = (f'%{value}%')
     results = cursor.execute(query,(value,)).fetchall()
     print(f'\n{"ID":3} {"First Name":<25}{"Last Name":<17}')
@@ -291,7 +293,9 @@ def add():
 def add_comp():
     print()
     query = "INSERT INTO COMPENTENCIES (compentency_id, name, date_created) values(?, ?, ?)"
-    val0 = input('Please enter a user_id')
+    val0 = input(f'''Please enter the User Id for the person that you would like add information to:
+{view_people()}
+''')
     val4 = input(''' 
 
     Please type out a compentecy below that you would like to report on
@@ -326,7 +330,9 @@ def add_comp():
 
 def add_assessment():
     query = "INSERT INTO Assessments (assessment_id,compentency_id, name_of_assessment, date_created) values(?, ?, ?)"
-    val0 = input('Please enter a user_id: ')
+    val0 = input(f'''Please enter the User Id for the person that you would like add information to:
+{view_people()}
+''')
     val05 = input('Please enter a compentency id:')
     val1 = input("Please enter name of assesment: ")
     val2 = input("Please enter date test was taken: ")
@@ -343,7 +349,9 @@ def add_assessment():
 def add_assessment_results():
     query = "INSERT INTO Assessment_Results (assessment_result_id, user_id, name_of_assessment, assessment_id, score, date_taken, manager) values(?, ?, ?, ?, ?)"
     val05 = input("please enter a assessment_result_id")
-    val0 = input('Please enter a user_id: ')
+    val0 = input(f'''Please enter the User Id for the person that you would like add information to:
+{view_people()}
+''')
     val1 = input(''' 
 
     Please type out a compentecy below that you would like to report on
@@ -390,7 +398,9 @@ def update_email():
     query = "UPDATE Users SET email=? WHERE user_id=?"
     
     val4 = input("Please enter new email: ")
-    value = input("Please enter your user ID: ")
+    value = input(f'''Please enter the User Id for the person that you would like add update:
+{view_people()}
+''')
 
     values = (val4, value)
 
@@ -404,7 +414,9 @@ def update_phone():
     
     
     val5 = input("Please enter a new phone: ")
-    value = input("Please enter your user ID: ")
+    value = input(f'''Please enter the User Id for the person that you would like add update:
+{view_people()}
+''')
 
     values = (val5, value)
 
@@ -417,7 +429,9 @@ def update_password():
     query = "UPDATE Users SET password=? WHERE user_id=?"
     
     val6 = input("Please enter a new password: ")
-    value = input("Please enter your user ID: ")
+    value = input(f'''Please enter the User Id for the person that you would like add update:
+{view_people()}
+''')
 
     values = (val6, value)
 
@@ -430,7 +444,9 @@ def update_users_compentency():
     query = "UPDATE COMPENTENCIES SET name=? WHERE user_id=? AND name=?"
     
     val18 = input("what test would you like to change:")
-    value = input("User ID please: ")
+    value = input(f'''Please enter the User Id for the person that you would like add update:
+{view_people()}
+''')
     val8 = input("what is the new test name?: ")
 
     values = (val8, value,val18)
@@ -445,7 +461,9 @@ def update_users_assessment():
     query = "UPDATE Assessments SET name_of_assessment=? WHERE user_id=? AND name_of_assessment=?"
     
     val18 = input("what test would you like to change: ")
-    value = input("User ID please: ")
+    value = input(f'''Please enter the User Id for the person that you would like add update:
+{view_people()}
+''')
     val8 = input("what is the new test name?: ")
 
     values = (val8, value,val18)
@@ -460,7 +478,9 @@ def update_users_results():
     query = "UPDATE Assessment_Results SET score=? WHERE user_id=? AND name_of_assessment=?"
     
     val18 = input("what test would you like to change: ")
-    value = input("User ID please: ")
+    value = input(f'''Please enter the User Id for the person that you would like add update:
+{view_people()}
+''')
     val8 = input("please enter a new score: ")
 
     values = (val8, value,val18)
@@ -474,7 +494,9 @@ def update_active_status():
     query = "UPDATE Users SET active=? WHERE user_id=?"
     
     val8 = input("Please enter a 1 for active or a 0 to deactivate: ")
-    value = input("Please enter the User Id that you would like to know the assessments of: ")
+    value = input(f'''Please enter the User Id for the person that you would like to deactivate:
+{view_people()}
+''')
 
     values = (val8, value)
 
