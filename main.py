@@ -144,7 +144,7 @@ def csv_reader():
                 print(f'{" ".join(row)}')
                 line_count += 1
             else:
-                query = "INSERT INTO Assessment_Results (user_id, name_of_assessment, score, date_taken, manager) values(?, ?, ?, ?, ?)"
+                query = "INSERT INTO Assessment_Results (user_id, assessment_result_id, score, date_taken, manager) values(?, ?, ?, ?, ?)"
                 val1 = (row[0])
                 val2 = (row[1])
                 val3 = (row[2])
@@ -290,7 +290,7 @@ def add():
 
 def add_comp():
     print()
-    query = "INSERT INTO COMPENTENCIES (user_id, name, date_created) values(?, ?, ?)"
+    query = "INSERT INTO COMPENTENCIES (compentency_id, name, date_created) values(?, ?, ?)"
     val0 = input('Please enter a user_id')
     val4 = input(''' 
 
@@ -325,12 +325,13 @@ def add_comp():
 # ------------------------------------------------------ ADD ASSIGNMENT
 
 def add_assessment():
-    query = "INSERT INTO Assessments (user_id, name_of_assessment, date_created) values(?, ?, ?)"
+    query = "INSERT INTO Assessments (assessment_id,compentency_id, name_of_assessment, date_created) values(?, ?, ?)"
     val0 = input('Please enter a user_id: ')
+    val05 = input('Please enter a compentency id:')
     val1 = input("Please enter name of assesment: ")
     val2 = input("Please enter date test was taken: ")
    
-    values = (val0, val1, val2)
+    values = (val0, val05, val1, val2)
 
     cursor.execute(query, values)
     connection.commit()
@@ -340,7 +341,8 @@ def add_assessment():
 # ------------------------------------------------------ ADD ASSIGNMENT RESULTS
 
 def add_assessment_results():
-    query = "INSERT INTO Assessment_Results (user_id, name_of_assessment, score, date_taken, manager) values(?, ?, ?, ?, ?)"
+    query = "INSERT INTO Assessment_Results (assessment_result_id, user_id, name_of_assessment, assessment_id, score, date_taken, manager) values(?, ?, ?, ?, ?)"
+    val05 = input("please enter a assessment_result_id")
     val0 = input('Please enter a user_id: ')
     val1 = input(''' 
 
@@ -372,10 +374,11 @@ def add_assessment_results():
 
     Enter where the employee is on the scale:
     ''')
+    val02 = input("Please enter the assesment id")
     val3 = input("Please enter date test was taken: ")
     val4 = input("Please enter manager: ")
    
-    values = (val0, val1, val2, val3, val4)
+    values = (val05, val0, val1, val2, val02, val3, val4)
 
     cursor.execute(query, values)
     connection.commit()
